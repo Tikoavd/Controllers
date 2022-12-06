@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/socketLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.SocketFragment"
+    android:background="@drawable/bgimage">
+
+    <ImageButton
+        android:id="@+id/settingsButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/fat_margin"
+        android:background="@null"
+        android:scaleType="fitXY"
+        android:src="@drawable/settings_button"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintHorizontal_weight="50"
+        app:layout_constraintBottom_toTopOf="@id/topSocketLine"
+        app:layout_constraintEnd_toStartOf="@id/logotypeSocket"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0" />
+
+    <ImageView
+        android:id="@+id/logotypeSocket"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/logo_image"
+        android:layout_marginTop="@dimen/fat_margin"
+        app:layout_constraintDimensionRatio="161:223"
+        app:layout_constraintHorizontal_weight="100"
+        app:layout_constraintBottom_toTopOf="@id/topSocketLine"
+        app:layout_constraintEnd_toStartOf="@id/socketName"
+        app:layout_constraintStart_toEndOf="@+id/settingsButton"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/socketName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/maitree_light"
+        android:text="Видео"
+        android:textColor="#F7F7F7"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toBottomOf="@id/logotypeSocket"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/logotypeSocket"
+        app:layout_constraintTop_toTopOf="@+id/logotypeSocket"
+        app:layout_constraintVertical_bias="0.75" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/topSocketLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.24"/>
+
+    <ImageButton
+        android:id="@+id/onSocketButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/fat_margin"
+        android:scaleType="fitXY"
+        app:layout_constraintDimensionRatio="1:1"
+        android:src="@drawable/big_elipse"
+        android:background ="@null"
+
+        app:layout_constraintHeight_percent="0.4"
+        app:layout_constraintTop_toBottomOf="@+id/topSocketLine"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/offSocketButton"/>
+
+    <ImageButton
+        android:id="@+id/offSocketButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/fat_margin"
+        android:scaleType="fitXY"
+        app:layout_constraintDimensionRatio="1:1"
+        android:src="@drawable/big_elipse"
+        android:background ="@null"
+        app:layout_constraintTop_toBottomOf="@+id/topSocketLine"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/onSocketButton"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

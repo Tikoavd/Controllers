@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragmentMainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.MainFragment"
+    android:background="@drawable/bgimage">
+
+    <ImageButton
+        android:id="@+id/settingsButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/fat_margin"
+        android:background="@null"
+        android:scaleType="fitXY"
+        android:src="@drawable/settings_button"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintHorizontal_weight="50"
+        app:layout_constraintBottom_toTopOf="@id/topLine"
+        app:layout_constraintEnd_toStartOf="@id/logotype"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0" />
+
+    <ImageView
+        android:id="@+id/logotype"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/logo_image"
+        android:layout_marginTop="@dimen/fat_margin"
+        app:layout_constraintDimensionRatio="161:223"
+        app:layout_constraintHorizontal_weight="100"
+        app:layout_constraintBottom_toTopOf="@id/topLine"
+        app:layout_constraintEnd_toStartOf="@id/videoName"
+        app:layout_constraintStart_toEndOf="@+id/settingsButton"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/fullScreenButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintWidth_percent="0.07"
+        android:layout_marginEnd="@dimen/fat_margin"
+        android:layout_marginTop="@dimen/fat_margin"
+        android:scaleType="fitCenter"
+        android:src="@drawable/fullscreen_img"
+        android:background="@null"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/topLine"
+        app:layout_constraintHorizontal_bias="1"/>
+
+    <TextView
+        android:id="@+id/videoName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/maitree_light"
+        android:text="Видео"
+        android:textColor="#F7F7F7"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toBottomOf="@id/logotype"
+        app:layout_constraintEnd_toStartOf="@id/fullScreenButton"
+        app:layout_constraintStart_toEndOf="@+id/logotype"
+        app:layout_constraintTop_toTopOf="@+id/logotype"
+        app:layout_constraintVertical_bias="0.75" />
+
+    <ImageView
+        android:id="@+id/line"
+        android:layout_width="0dp"
+        android:layout_height="4dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/line_vector"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/logotype"
+        app:layout_constraintTop_toBottomOf="@+id/videoName" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/topLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.24"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/midTopLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.365"/>
+
+    <ImageButton
+        android:id="@+id/previousButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/fat_margin"
+        app:layout_constraintDimensionRatio="1:1"
+        android:scaleType="fitXY"
+        app:layout_constraintHorizontal_bias="0.25"
+        android:src="@drawable/previous"
+        app:layout_constraintTop_toBottomOf="@id/midTopLine"
+        app:layout_constraintBottom_toTopOf="@id/midBottomLine"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/playPauseButton"
+        android:background="@null"/>
+
+    <ImageButton
+        android:id="@+id/playPauseButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/fat_margin"
+        android:src="@drawable/big_elipse"
+        app:layout_constraintDimensionRatio="1:1"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toTopOf="@id/bottomLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topLine"
+        android:background="@null"/>
+
+    <ImageView
+        android:id="@+id/playimg"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/fat_margin"
+        app:layout_constraintDimensionRatio="143:144"
+        android:scaleType="fitXY"
+        android:src="@drawable/play"
+        app:layout_constraintHorizontal_bias="0.58"
+        app:layout_constraintTop_toTopOf="@id/midTopLine"
+        app:layout_constraintBottom_toBottomOf="@id/midBottomLine"
+        app:layout_constraintStart_toStartOf="@id/playPauseButton"
+        app:layout_constraintEnd_toEndOf="@id/playPauseButton"/>
+
+    <ImageView
+        android:id="@+id/pauseimg"
+        android:visibility="invisible"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/fat_margin"
+        app:layout_constraintDimensionRatio="1:1"
+        android:scaleType="center"
+        android:src="@drawable/pause"
+        app:layout_constraintBottom_toBottomOf="@+id/midBottomLine"
+        app:layout_constraintEnd_toEndOf="@+id/playPauseButton"
+        app:layout_constraintStart_toStartOf="@+id/playPauseButton"
+        app:layout_constraintTop_toTopOf="@+id/midTopLine" />
+
+    <ImageButton
+        android:id="@+id/nextButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/fat_margin"
+        app:layout_constraintDimensionRatio="1:1"
+        android:scaleType="fitXY"
+        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintTop_toBottomOf="@id/midTopLine"
+        app:layout_constraintBottom_toTopOf="@id/midBottomLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/playPauseButton"
+        android:src="@drawable/next"
+        android:background="@null"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/midBottomLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.615"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bottomLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.74"/>
+
+    <ImageButton
+        android:id="@+id/repeatButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@null"
+        android:scaleType="fitXY"
+        android:src="@drawable/repeat"
+        app:layout_constraintBottom_toTopOf="@id/minusButton"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bottomLine" />
+
+    <ImageButton
+        android:id="@+id/minusButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/fat_margin"
+        app:layout_constraintDimensionRatio="1:1"
+        android:scaleType="fitXY"
+        android:src="@drawable/minus"
+        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintTop_toBottomOf="@id/repeatButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@null"/>
+
+    <ImageButton
+        android:id="@+id/plusButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/fat_margin"
+        app:layout_constraintDimensionRatio="1:1"
+        android:scaleType="fitXY"
+        android:src="@drawable/plus"
+        app:layout_constraintStart_toEndOf="@id/minusButton"
+        app:layout_constraintTop_toTopOf="@id/minusButton"
+        app:layout_constraintBottom_toBottomOf="@id/minusButton"
+        android:background="@null"/>
+
+    <ImageView
+        android:id="@+id/volumeimg"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/fat_margin"
+        app:layout_constraintDimensionRatio="52:50"
+        android:scaleType="fitXY"
+        android:src="@drawable/volume"
+        app:layout_constraintStart_toEndOf="@id/plusButton"
+        app:layout_constraintTop_toTopOf="@id/plusButton"
+        app:layout_constraintBottom_toBottomOf="@id/plusButton" />
+</androidx.constraintlayout.widget.ConstraintLayout>
