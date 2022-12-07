@@ -7,16 +7,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
-import com.freelance.controllers.Fragments.MainFragment
-import com.freelance.controllers.Fragments.OpenHomeFragment
-import com.freelance.controllers.Fragments.OpenInstalFragment
+import com.freelance.controllers.Fragments.*
+import com.freelance.controllers.Fragments.Interfaces.OpenHomeFragment
+import com.freelance.controllers.Fragments.Interfaces.OpenInstalFragment
+import com.freelance.controllers.Fragments.Interfaces.OpenSocketFragment
 import com.freelance.controllers.R
 import com.freelance.controllers.Room.AppDatabase
 import com.freelance.controllers.Room.InstalEntity
+import com.freelance.controllers.Room.InstalType
 
 class ButtonsAdapter(val items: MutableList<InstalEntity>) : RecyclerView.Adapter<ButtonsAdapter.ButtonsViewHolder>(){
     var selected: ButtonsViewHolder? = null
     var openInstalFragment: OpenInstalFragment? = null
+    var openSocketFragment: OpenSocketFragment? = null
     var openHomeFragment: OpenHomeFragment? = null
 
     inner class ButtonsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -30,12 +33,24 @@ class ButtonsAdapter(val items: MutableList<InstalEntity>) : RecyclerView.Adapte
                 fragmentButton.backgroundTintList = ColorStateList.valueOf(Color.WHITE)
 
                 val instalEntity = this@ButtonsAdapter.items[position]
-                val fragment = MainFragment().apply {
-                    _instalEntity = instalEntity
-                    openInstalFragment = this@ButtonsAdapter.openInstalFragment
+
+                when (instalEntity.type) {
+                    InstalType.Default -> {
+                        val fragment = MainFragment().apply {
+                            _instalEntity = instalEntity
+                        }
+                        openInstalFragment?.openFragment(fragment)
+                    }
+                    InstalType.Socket -> {
+                        val fragment = SocketFragment().apply {
+                            _instalEntity = instalEntity
+                        }
+                        openSocketFragment?.openSocketFragment(fragment)
+                    }
                 }
-                openInstalFragment?.openFragment(fragment)
             }
+
+            deleteButton.visibility = View.INVISIBLE
 
             deleteButton.setOnClickListener {
                 val db = AppDatabase.createDatabase(itemView.context)

@@ -53,6 +53,16 @@
         app:layout_constraintTop_toTopOf="@+id/logotypeSocket"
         app:layout_constraintVertical_bias="0.75" />
 
+    <ImageView
+        android:id="@+id/line"
+        android:layout_width="0dp"
+        android:layout_height="4dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/line_vector"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/logotypeSocket"
+        app:layout_constraintTop_toBottomOf="@+id/socketName" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/topSocketLine"
         android:layout_width="wrap_content"
@@ -76,6 +86,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/offSocketButton"/>
 
+
+    <TextView
+        android:id="@+id/onSocketText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/maitree_light"
+        android:textColor="#F7F7F7"
+        android:textSize="32sp"
+        android:text="ON"
+        app:layout_constraintTop_toTopOf="@id/onSocketButton"
+        app:layout_constraintBottom_toBottomOf="@id/onSocketButton"
+        app:layout_constraintStart_toStartOf="@id/onSocketButton"
+        app:layout_constraintEnd_toEndOf="@id/onSocketButton"/>
+
     <ImageButton
         android:id="@+id/offSocketButton"
         android:layout_width="0dp"
@@ -89,5 +113,19 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/onSocketButton"/>
+
+
+    <TextView
+        android:id="@+id/offSocketText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/maitree_light"
+        android:textColor="#F7F7F7"
+        android:textSize="32sp"
+        android:text="OFF"
+        app:layout_constraintTop_toTopOf="@id/offSocketButton"
+        app:layout_constraintBottom_toBottomOf="@id/offSocketButton"
+        app:layout_constraintStart_toStartOf="@id/offSocketButton"
+        app:layout_constraintEnd_toEndOf="@id/offSocketButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

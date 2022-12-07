@@ -1,4 +1,4 @@
-package com.freelance.controllers.Fragments
+package com.freelance.controllers.Fragments.Interfaces
 
 fun interface RepeatRequest {
     fun repeatRequest()

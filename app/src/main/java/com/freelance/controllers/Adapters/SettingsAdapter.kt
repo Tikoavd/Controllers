@@ -7,7 +7,6 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.freelance.controllers.Fragments.RepeatSettingsRequest
 import com.freelance.controllers.Fragments.toEditable
 import com.freelance.controllers.R
 import com.freelance.controllers.Room.AppDatabase
@@ -15,7 +14,6 @@ import com.freelance.controllers.Room.PlayerEntity
 
 class SettingsAdapter(val players: MutableList<PlayerEntity>) :
     RecyclerView.Adapter<SettingsAdapter.SettingsViewHolder>() {
-    var repeatSettingsRequest: RepeatSettingsRequest? = null
 
     inner class SettingsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val ipAddressEdit = itemView.findViewById<EditText>(R.id.ipAddressEdit)

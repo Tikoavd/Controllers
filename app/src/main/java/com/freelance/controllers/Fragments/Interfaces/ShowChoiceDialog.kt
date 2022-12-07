@@ -1,4 +1,4 @@
-package com.freelance.controllers.Fragments
+package com.freelance.controllers.Fragments.Interfaces
 
 import android.content.Context
 

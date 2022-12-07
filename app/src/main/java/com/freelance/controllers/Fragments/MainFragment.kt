@@ -47,6 +47,7 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.videoName.text = instalEntity.video
+        if (!menuFragment!!.inAdminMode) binding.settingsButton.visibility = View.INVISIBLE
 
         if (playing) {
             binding.playimg.visibility = View.INVISIBLE
@@ -67,7 +68,6 @@ class MainFragment : Fragment() {
                 val fullScreenFragment = MainFragment()
                 fullScreenFragment.playing = this.playing
                 fullScreenFragment._instalEntity = this.instalEntity
-                fullScreenFragment.playing = this.playing
                 fullScreenFragment.menuFragment = this.menuFragment
                 fullScreenFragment.inFullScreen = true
 
@@ -82,37 +82,13 @@ class MainFragment : Fragment() {
                 return@setOnClickListener
             }
 
-            val password = requireActivity().getSharedPreferences("password", Context.MODE_PRIVATE)
-                .getString("password", "123456")
-
-            requireActivity().let {
-                val editPassword = EditText(context)
-                editPassword.setEms(10)
-                editPassword.inputType = 0x00000061
-
-                val builder = AlertDialog.Builder(it)
-                builder.setView(editPassword)
-                    .setTitle("Введите пароль")
-                    .setPositiveButton("Ок") { dialog, id ->
-                        val enteredPassword = editPassword.text.toString()
-                        if (enteredPassword.isNotBlank() && enteredPassword == password) {
-                            requireActivity().supportFragmentManager.beginTransaction()
-                                .remove(this)
-                                .replace(
-                                    requireActivity().findViewById<FragmentContainerView>(R.id.mainMenuContainer).id,
-                                    menuFragment!!
-                                )
-                                .commit()
-                            dialog.cancel()
-
-                        } else {
-                            dialog.cancel()
-                            Toast.makeText(requireContext(), "Неверный пароль", Toast.LENGTH_SHORT)
-                                .show()
-                        }
-                    }
-                builder.create().show()
-            }
+            requireActivity().supportFragmentManager.beginTransaction()
+                .remove(this)
+                .replace(
+                    requireActivity().findViewById<FragmentContainerView>(R.id.mainMenuContainer).id,
+                    menuFragment!!
+                )
+                .commit()
         }
 
         binding.settingsButton.setOnClickListener {
@@ -129,32 +105,8 @@ class MainFragment : Fragment() {
                 return@setOnClickListener
             }
 
-            val password = requireActivity().getSharedPreferences("password", Context.MODE_PRIVATE)
-                .getString("password", "123456")
-
-            requireActivity().let {
-                val editPassword = EditText(context)
-                editPassword.setEms(10)
-                editPassword.inputType = 0x00000061
-
-                val builder = AlertDialog.Builder(it)
-                builder.setView(editPassword)
-                    .setTitle("Введите пароль")
-                    .setPositiveButton("Ок") { dialog, id ->
-                        val enteredPassword = editPassword.text.toString()
-                        if (enteredPassword.isNotBlank() && enteredPassword == password) {
-                            requireActivity().supportFragmentManager.beginTransaction()
-                                .replace(R.id.mainFullScreenContainer, settingsFragment).commit()
-                            dialog.cancel()
-
-                        } else {
-                            dialog.cancel()
-                            Toast.makeText(requireContext(), "Неверный пароль", Toast.LENGTH_SHORT)
-                                .show()
-                        }
-                    }
-                builder.create().show()
-            }
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.mainFullScreenContainer, settingsFragment).commit()
         }
 
         binding.playPauseButton.setOnClickListener {

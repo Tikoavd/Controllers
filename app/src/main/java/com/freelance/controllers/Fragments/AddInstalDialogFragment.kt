@@ -2,19 +2,12 @@ package com.freelance.controllers.Fragments
 
 import android.app.AlertDialog
 import android.app.Dialog
-import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.EditText
 import androidx.fragment.app.DialogFragment
 import com.freelance.controllers.Adapters.ButtonsAdapter
-import com.freelance.controllers.R
-import com.freelance.controllers.Room.AppDatabase
-import com.freelance.controllers.Room.InstalDao
-import com.freelance.controllers.Room.InstalEntity
-import com.freelance.controllers.Room.InstalType
+import com.freelance.controllers.Fragments.Interfaces.RepeatRequest
+import com.freelance.controllers.Fragments.Interfaces.ShowChoiceDialog
 
 class AddInstalDialogFragment : DialogFragment() {
     var adapter: ButtonsAdapter? = null

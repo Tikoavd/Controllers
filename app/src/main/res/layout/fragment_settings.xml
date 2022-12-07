@@ -121,7 +121,7 @@
         android:id="@+id/videoNameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Название видео"
+        android:text="Надпись"
         android:fontFamily="@font/maitree_light"
         android:textColor="#F7F7F7"
         android:textSize="25sp"

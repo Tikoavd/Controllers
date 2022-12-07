@@ -11,6 +11,7 @@ import com.freelance.controllers.Adapters.SettingsAdapter
 import com.freelance.controllers.R
 import com.freelance.controllers.Room.AppDatabase
 import com.freelance.controllers.Room.InstalEntity
+import com.freelance.controllers.Room.InstalType
 import com.freelance.controllers.Room.PlayerEntity
 import com.freelance.controllers.databinding.FragmentSettingsBinding
 
@@ -70,18 +71,37 @@ class SettingsFragment : Fragment() {
         }
 
         binding.backToMainButton.setOnClickListener {
-            val fragment = MainFragment().apply {
-                _instalEntity = this@SettingsFragment.instalEntity
-                inFullScreen = this@SettingsFragment.inFullScreen
-                menuFragment = this@SettingsFragment.menuFragment
-            }
-            if (!inFullScreen) {
-                requireActivity().supportFragmentManager.beginTransaction()
-                    .replace(R.id.mainFragmentContainer, fragment).commit()
-            }
-            else {
-                requireActivity().supportFragmentManager.beginTransaction()
-                    .replace(R.id.mainFullScreenContainer, fragment).commit()
+            when (instalEntity.type) {
+                InstalType.Default -> {
+                    val fragment = MainFragment().apply {
+                        _instalEntity = this@SettingsFragment.instalEntity
+                        inFullScreen = this@SettingsFragment.inFullScreen
+                        menuFragment = this@SettingsFragment.menuFragment
+                    }
+                    if (!inFullScreen) {
+                        requireActivity().supportFragmentManager.beginTransaction()
+                            .replace(R.id.mainFragmentContainer, fragment).commit()
+                    }
+                    else {
+                        requireActivity().supportFragmentManager.beginTransaction()
+                            .replace(R.id.mainFullScreenContainer, fragment).commit()
+                    }
+                }
+
+                InstalType.Socket -> {
+                    val fragment = SocketFragment().apply {
+                        _instalEntity = this@SettingsFragment.instalEntity
+                        menuFragment = this@SettingsFragment.menuFragment
+                    }
+                    if (!inFullScreen) {
+                        requireActivity().supportFragmentManager.beginTransaction()
+                            .replace(R.id.mainFragmentContainer, fragment).commit()
+                    }
+                    else {
+                        requireActivity().supportFragmentManager.beginTransaction()
+                            .replace(R.id.mainFullScreenContainer, fragment).commit()
+                    }
+                }
             }
         }
     }
