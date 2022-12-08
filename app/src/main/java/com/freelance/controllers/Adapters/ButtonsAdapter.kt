@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.freelance.controllers.Fragments.*
 import com.freelance.controllers.Fragments.Interfaces.OpenHomeFragment
 import com.freelance.controllers.Fragments.Interfaces.OpenInstalFragment
+import com.freelance.controllers.Fragments.Interfaces.OpenProjectorFragment
 import com.freelance.controllers.Fragments.Interfaces.OpenSocketFragment
 import com.freelance.controllers.R
 import com.freelance.controllers.Room.AppDatabase
@@ -20,6 +21,7 @@ class ButtonsAdapter(val items: MutableList<InstalEntity>) : RecyclerView.Adapte
     var selected: ButtonsViewHolder? = null
     var openInstalFragment: OpenInstalFragment? = null
     var openSocketFragment: OpenSocketFragment? = null
+    var openProjectorFragment: OpenProjectorFragment? = null
     var openHomeFragment: OpenHomeFragment? = null
     var menuFragment: MenuFragment? = null
 
@@ -42,11 +44,19 @@ class ButtonsAdapter(val items: MutableList<InstalEntity>) : RecyclerView.Adapte
                         }
                         openInstalFragment?.openFragment(fragment)
                     }
+
                     InstalType.Socket -> {
                         val fragment = SocketFragment().apply {
                             _instalEntity = instalEntity
                         }
                         openSocketFragment?.openSocketFragment(fragment)
+                    }
+
+                    InstalType.Projector -> {
+                        val fragment = ProjectorFragment().apply {
+                            _instalEntity = instalEntity
+                        }
+                        openProjectorFragment?.openProjectorFragment(fragment)
                     }
                 }
             }

@@ -9,11 +9,9 @@ import retrofit2.http.POST
 interface ApiService {
     @FormUrlEncoded
     @POST("/index.html")
-    fun socketOn(@Header("Authorization") type: String = "Basic",
-                    @Field("btnpwr") command: String = "on"): Call<String>
+    fun socketOn(@Field("btnpwr") command: String = "on"): Call<String>
 
     @FormUrlEncoded
     @POST("/index.html")
-    fun socketOff(@Header("Authorization") type: String = "Basic",
-                 @Field("btnpwr") command: String = "off"): Call<String>
+    fun socketOff(@Field("btnpwr") command: String = "off"): Call<String>
 }

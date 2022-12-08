@@ -59,6 +59,10 @@ class HomeFragment : Fragment() {
                             InstalType.Socket -> {
 
                             }
+
+                            InstalType.Projector -> {
+
+                            }
                         }
                     }
                     dialog.cancel()
@@ -85,6 +89,10 @@ class HomeFragment : Fragment() {
                             }
 
                             InstalType.Socket -> {
+
+                            }
+
+                            InstalType.Projector -> {
 
                             }
                         }

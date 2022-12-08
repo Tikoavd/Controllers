@@ -86,8 +86,7 @@ class SocketFragment : Fragment() {
                         }
 
                         override fun onFailure(call: Call<String>, t: Throwable) {
-                            Toast.makeText(requireContext(), "Request Failed", Toast.LENGTH_SHORT)
-                                .show()
+
                         }
 
                     }
@@ -111,9 +110,7 @@ class SocketFragment : Fragment() {
                         }
 
                         override fun onFailure(call: Call<String>, t: Throwable) {
-                            Toast.makeText(requireContext(), "Request Failed", Toast.LENGTH_SHORT)
-                                .show()
-                            println(t)
+
                         }
                     }
                 )

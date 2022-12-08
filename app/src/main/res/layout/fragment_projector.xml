@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/socketLayout"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/homeSettingsLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.SocketFragment"
+    tools:context=".Fragments.ProjectorFragment"
     android:background="#a6a4a4">
 
     <ImageButton
-        android:id="@+id/settingsButton"
+        android:id="@+id/settingsProjectorButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="@dimen/fat_margin"
@@ -19,13 +19,13 @@
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintHorizontal_weight="50"
         app:layout_constraintBottom_toTopOf="@id/topSocketLine"
-        app:layout_constraintEnd_toStartOf="@id/logotypeSocket"
+        app:layout_constraintEnd_toStartOf="@id/logotypeProjector"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0" />
 
     <ImageView
-        android:id="@+id/logotypeSocket"
+        android:id="@+id/logotypeProjector"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="fitXY"
@@ -34,23 +34,23 @@
         app:layout_constraintDimensionRatio="161:223"
         app:layout_constraintHorizontal_weight="100"
         app:layout_constraintBottom_toTopOf="@id/topSocketLine"
-        app:layout_constraintEnd_toStartOf="@id/socketName"
-        app:layout_constraintStart_toEndOf="@+id/settingsButton"
+        app:layout_constraintEnd_toStartOf="@id/projectorName"
+        app:layout_constraintStart_toEndOf="@+id/settingsProjectorButton"
         app:layout_constraintTop_toTopOf="parent" />
 
 
     <TextView
-        android:id="@+id/socketName"
+        android:id="@+id/projectorName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/maitree_light"
         android:text="Видео"
         android:textColor="#F7F7F7"
         android:textSize="32sp"
-        app:layout_constraintBottom_toBottomOf="@id/logotypeSocket"
+        app:layout_constraintBottom_toBottomOf="@id/logotypeProjector"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/logotypeSocket"
-        app:layout_constraintTop_toTopOf="@+id/logotypeSocket"
+        app:layout_constraintStart_toEndOf="@+id/logotypeProjector"
+        app:layout_constraintTop_toTopOf="@+id/logotypeProjector"
         app:layout_constraintVertical_bias="0.75" />
 
     <ImageView
@@ -60,8 +60,8 @@
         android:scaleType="fitXY"
         android:src="@drawable/line_vector"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/logotypeSocket"
-        app:layout_constraintTop_toBottomOf="@+id/socketName" />
+        app:layout_constraintStart_toEndOf="@+id/logotypeProjector"
+        app:layout_constraintTop_toBottomOf="@+id/projectorName" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/topSocketLine"
@@ -71,7 +71,7 @@
         app:layout_constraintGuide_percent="0.24"/>
 
     <Button
-        android:id="@+id/onSocketButton"
+        android:id="@+id/onProjectorButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="@dimen/fat_margin"
@@ -86,11 +86,11 @@
         app:layout_constraintTop_toBottomOf="@+id/topSocketLine"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/offSocketButton"/>
+        app:layout_constraintEnd_toStartOf="@id/offProjectorButton"/>
 
 
     <Button
-        android:id="@+id/offSocketButton"
+        android:id="@+id/offProjectorButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="@dimen/fat_margin"
@@ -104,6 +104,6 @@
         app:layout_constraintTop_toBottomOf="@+id/topSocketLine"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/onSocketButton"/>
+        app:layout_constraintStart_toEndOf="@id/onProjectorButton"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

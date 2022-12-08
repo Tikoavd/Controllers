@@ -102,6 +102,21 @@ class SettingsFragment : Fragment() {
                             .replace(R.id.mainFullScreenContainer, fragment).commit()
                     }
                 }
+
+                InstalType.Projector -> {
+                    val fragment = ProjectorFragment().apply {
+                        _instalEntity = this@SettingsFragment.instalEntity
+                        menuFragment = this@SettingsFragment.menuFragment
+                    }
+                    if (!inFullScreen) {
+                        requireActivity().supportFragmentManager.beginTransaction()
+                            .replace(R.id.mainFragmentContainer, fragment).commit()
+                    }
+                    else {
+                        requireActivity().supportFragmentManager.beginTransaction()
+                            .replace(R.id.mainFullScreenContainer, fragment).commit()
+                    }
+                }
             }
         }
     }

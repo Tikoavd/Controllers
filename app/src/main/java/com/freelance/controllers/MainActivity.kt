@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity() {
                     val typeNames = Array<String>(InstalType.values().size) { "" }
                     typeNames[0] = "BrightSign"
                     typeNames[1] = "Розетка"
+                    typeNames[2] = "Проектор"
                     var choicedItem = typeNames[0]
 
                     val db = AppDatabase.createDatabase(this@MainActivity)
@@ -55,6 +56,7 @@ class MainActivity : AppCompatActivity() {
                             val instalType = when (choicedItem) {
                                 "BrightSign" -> InstalType.Default
                                 "Розетка" -> InstalType.Socket
+                                "Проектор" -> InstalType.Projector
                                 else -> InstalType.Default
                             }
                             val instalEntity = InstalEntity(name, instalType, choicedItem)

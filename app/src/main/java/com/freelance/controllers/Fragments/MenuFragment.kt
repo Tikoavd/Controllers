@@ -16,6 +16,7 @@ import com.freelance.controllers.Fragments.Interfaces.AdminMode
 import com.freelance.controllers.Fragments.Interfaces.OpenAddDialogFragment
 import com.freelance.controllers.Fragments.Interfaces.OpenHomeFragment
 import com.freelance.controllers.Fragments.Interfaces.OpenInstalFragment
+import com.freelance.controllers.Fragments.Interfaces.OpenProjectorFragment
 import com.freelance.controllers.Fragments.Interfaces.OpenSocketFragment
 import com.freelance.controllers.R
 import com.freelance.controllers.Room.AppDatabase
@@ -69,6 +70,15 @@ class MenuFragment : Fragment() {
                         ).commit()
                 }
 
+                openProjectorFragment = OpenProjectorFragment { fragment ->
+                    fragment.menuFragment = this@MenuFragment
+                    requireActivity().supportFragmentManager.beginTransaction()
+                        .replace(
+                            activity?.findViewById<FragmentContainerView>(R.id.mainFragmentContainer)!!.id,
+                            fragment
+                        ).commit()
+                }
+
                 openHomeFragment = OpenHomeFragment {
                     val homeFragment = HomeFragment()
                     homeFragment.adminMode = AdminMode { on ->
@@ -101,32 +111,6 @@ class MenuFragment : Fragment() {
             adapter = setAdapter
         }
 
-
-        val homeFragment = HomeFragment()
-        homeFragment.adminMode = AdminMode { on ->
-            inAdminMode = on
-            if (!inAdminMode) binding.addButton.visibility = View.INVISIBLE
-            else binding.addButton.visibility = View.VISIBLE
-
-            with(binding.recycleButtons) {
-                for (i in 0 until adapter!!.itemCount) {
-                    val holder = findViewHolderForAdapterPosition(i)
-                    if (holder != null) {
-                        val deleteButton = holder.itemView.findViewById<Button>(R.id.deleteButton)
-                        deleteButton.visibility = if (on) View.VISIBLE else View.INVISIBLE
-                    }
-                }
-            }
-        }
-        homeFragment.inAdminMode = inAdminMode
-
-        requireActivity().supportFragmentManager.beginTransaction()
-            .replace(
-                activity?.findViewById<FragmentContainerView>(R.id.mainFragmentContainer)!!.id,
-                homeFragment
-            ).commit()
-
-
         binding.logoButton.setOnClickListener {
             val homeFragment = HomeFragment()
             homeFragment.adminMode = AdminMode { on ->
@@ -155,6 +139,33 @@ class MenuFragment : Fragment() {
                 ColorStateList.valueOf(Color.parseColor("#a6a4a4"))
             setAdapter.selected = null
         }
+
+        val homeFragment = HomeFragment()
+        homeFragment.adminMode = AdminMode { on ->
+            inAdminMode = on
+            if (!inAdminMode) binding.addButton.visibility = View.INVISIBLE
+            else binding.addButton.visibility = View.VISIBLE
+
+            with(binding.recycleButtons) {
+                for (i in 0 until adapter!!.itemCount) {
+                    val holder = findViewHolderForAdapterPosition(i)
+                    if (holder != null) {
+                        val deleteButton = holder.itemView.findViewById<Button>(R.id.deleteButton)
+                        deleteButton.visibility = if (on) View.VISIBLE else View.INVISIBLE
+                    }
+                }
+            }
+        }
+        homeFragment.inAdminMode = inAdminMode
+
+        requireActivity().supportFragmentManager.beginTransaction()
+            .replace(
+                activity?.findViewById<FragmentContainerView>(R.id.mainFragmentContainer)!!.id,
+                homeFragment
+            ).commit()
+
+
+
 
         binding.addButton.setOnClickListener {
             openAddDialog?.openDialog(setAdapter, recyclerItems)

@@ -15,11 +15,9 @@
         android:scaleType="fitCenter"
         android:src="@drawable/network_diagram"
         app:layout_constraintBottom_toTopOf="@id/homeBottomLine"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintEnd_toStartOf="@id/switchAdminMode"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/homeBottomLine"
