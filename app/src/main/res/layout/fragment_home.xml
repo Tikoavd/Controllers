@@ -34,11 +34,14 @@
         android:layout_height="0dp"
         android:layout_margin="@dimen/fat_margin"
         android:text="ON"
+        android:fontFamily="@font/maitree_light"
+        android:textColor="#F7F7F7"
+        android:textSize="32sp"
         android:backgroundTint="#545454"
         app:layout_constraintTop_toBottomOf="@id/homeBottomLine"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/offButton"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/offButton"/>
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <Button
         android:id="@+id/offButton"
@@ -46,11 +49,14 @@
         android:layout_height="0dp"
         android:layout_margin="@dimen/fat_margin"
         android:text="OFF"
+        android:fontFamily="@font/maitree_light"
+        android:textColor="#F7F7F7"
+        android:textSize="32sp"
         android:backgroundTint="#545454"
         app:layout_constraintTop_toBottomOf="@id/homeBottomLine"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/onButton"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/onButton"/>
 
     <Switch
         android:id="@+id/switchAdminMode"

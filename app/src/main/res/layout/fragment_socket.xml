@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Fragments.SocketFragment"
-    android:background="@drawable/bgimage">
+    android:background="#a6a4a4">
 
     <ImageButton
         android:id="@+id/settingsButton"
@@ -70,16 +70,18 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.24"/>
 
-    <ImageButton
+    <Button
         android:id="@+id/onSocketButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="@dimen/fat_margin"
         android:scaleType="fitXY"
         app:layout_constraintDimensionRatio="1:1"
-        android:src="@drawable/big_elipse"
-        android:background ="@null"
-
+        android:backgroundTint ="#545454"
+        android:text="ON"
+        android:fontFamily="@font/maitree_light"
+        android:textColor="#F7F7F7"
+        android:textSize="32sp"
         app:layout_constraintHeight_percent="0.4"
         app:layout_constraintTop_toBottomOf="@+id/topSocketLine"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -87,28 +89,18 @@
         app:layout_constraintEnd_toStartOf="@id/offSocketButton"/>
 
 
-    <TextView
-        android:id="@+id/onSocketText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/maitree_light"
-        android:textColor="#F7F7F7"
-        android:textSize="32sp"
-        android:text="ON"
-        app:layout_constraintTop_toTopOf="@id/onSocketButton"
-        app:layout_constraintBottom_toBottomOf="@id/onSocketButton"
-        app:layout_constraintStart_toStartOf="@id/onSocketButton"
-        app:layout_constraintEnd_toEndOf="@id/onSocketButton"/>
-
-    <ImageButton
+    <Button
         android:id="@+id/offSocketButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="@dimen/fat_margin"
         android:scaleType="fitXY"
+        android:text="OFF"
+        android:fontFamily="@font/maitree_light"
+        android:textColor="#F7F7F7"
+        android:textSize="32sp"
         app:layout_constraintDimensionRatio="1:1"
-        android:src="@drawable/big_elipse"
-        android:background ="@null"
+        android:backgroundTint ="#545454"
         app:layout_constraintTop_toBottomOf="@+id/topSocketLine"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

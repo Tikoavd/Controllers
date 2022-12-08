@@ -21,6 +21,7 @@ class ButtonsAdapter(val items: MutableList<InstalEntity>) : RecyclerView.Adapte
     var openInstalFragment: OpenInstalFragment? = null
     var openSocketFragment: OpenSocketFragment? = null
     var openHomeFragment: OpenHomeFragment? = null
+    var menuFragment: MenuFragment? = null
 
     inner class ButtonsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val fragmentButton = itemView.findViewById<Button>(R.id.fragmentButton)
@@ -50,7 +51,7 @@ class ButtonsAdapter(val items: MutableList<InstalEntity>) : RecyclerView.Adapte
                 }
             }
 
-            deleteButton.visibility = View.INVISIBLE
+            if (menuFragment?.inAdminMode == false) deleteButton.visibility = View.INVISIBLE
 
             deleteButton.setOnClickListener {
                 val db = AppDatabase.createDatabase(itemView.context)

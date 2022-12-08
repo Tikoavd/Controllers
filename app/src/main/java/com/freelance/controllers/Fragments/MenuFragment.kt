@@ -50,6 +50,7 @@ class MenuFragment : Fragment() {
 
         val setAdapter = ButtonsAdapter(recyclerItems)
             .apply {
+                menuFragment = this@MenuFragment
                 openInstalFragment = OpenInstalFragment { fragment ->
                     fragment.menuFragment = this@MenuFragment
                     requireActivity().supportFragmentManager.beginTransaction()
@@ -85,6 +86,7 @@ class MenuFragment : Fragment() {
                             }
                         }
                     }
+                    homeFragment.inAdminMode = inAdminMode
 
                     requireActivity().supportFragmentManager.beginTransaction()
                         .replace(
@@ -116,6 +118,8 @@ class MenuFragment : Fragment() {
                 }
             }
         }
+        homeFragment.inAdminMode = inAdminMode
+
         requireActivity().supportFragmentManager.beginTransaction()
             .replace(
                 activity?.findViewById<FragmentContainerView>(R.id.mainFragmentContainer)!!.id,
@@ -140,6 +144,7 @@ class MenuFragment : Fragment() {
                     }
                 }
             }
+            homeFragment.inAdminMode = inAdminMode
             requireActivity().supportFragmentManager.beginTransaction()
                 .replace(
                     activity?.findViewById<FragmentContainerView>(R.id.mainFragmentContainer)!!.id,

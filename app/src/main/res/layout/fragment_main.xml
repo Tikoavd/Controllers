@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Fragments.MainFragment"
-    android:background="@drawable/bgimage">
+    android:background="#a6a4a4">
 
     <ImageButton
         android:id="@+id/settingsButton"
@@ -99,13 +99,13 @@
         android:layout_marginBottom="@dimen/fat_margin"
         app:layout_constraintDimensionRatio="1:1"
         android:scaleType="fitXY"
+        android:background="#545454"
         app:layout_constraintHorizontal_bias="0.25"
         android:src="@drawable/previous"
         app:layout_constraintTop_toBottomOf="@id/midTopLine"
         app:layout_constraintBottom_toTopOf="@id/midBottomLine"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/playPauseButton"
-        android:background="@null"/>
+        app:layout_constraintEnd_toStartOf="@id/playPauseButton" />
 
     <ImageButton
         android:id="@+id/playPauseButton"
@@ -119,7 +119,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/topLine"
-        android:background="@null"/>
+        android:background="#545454"/>
 
     <ImageView
         android:id="@+id/playimg"
@@ -162,7 +162,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/playPauseButton"
         android:src="@drawable/next"
-        android:background="@null"/>
+        android:background="#545454"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/midBottomLine"
@@ -182,7 +182,7 @@
         android:id="@+id/repeatButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@null"
+        android:background="#545454"
         android:scaleType="fitXY"
         android:src="@drawable/repeat"
         app:layout_constraintBottom_toTopOf="@id/minusButton"
@@ -204,7 +204,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="@null"/>
+        android:background="#545454"/>
 
     <ImageButton
         android:id="@+id/plusButton"
@@ -217,7 +217,7 @@
         app:layout_constraintStart_toEndOf="@id/minusButton"
         app:layout_constraintTop_toTopOf="@id/minusButton"
         app:layout_constraintBottom_toBottomOf="@id/minusButton"
-        android:background="@null"/>
+        android:background="#545454"/>
 
     <ImageView
         android:id="@+id/volumeimg"

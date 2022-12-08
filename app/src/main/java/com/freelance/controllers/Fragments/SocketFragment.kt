@@ -54,7 +54,7 @@ class SocketFragment : Fragment() {
         players = playerDao.getPlayers(instalEntity.id).toMutableList()
 
         if (players.size == 0) {
-            playerDao.addPlayer(PlayerEntity(instalEntity.id, "http://192.168.0.127"))
+            playerDao.addPlayer(PlayerEntity(instalEntity.id, "192.168.0.127"))
             players.addAll(playerDao.getPlayers(instalEntity.id).toMutableList())
         }
 
@@ -72,7 +72,7 @@ class SocketFragment : Fragment() {
 
         binding.onSocketButton.setOnClickListener {
             for (player in players) {
-                RetrofitBuilder.getApiService(player.host).socketOn().enqueue(
+                RetrofitBuilder.getApiService("http://${player.host}").socketOn().enqueue(
                     object : Callback<String> {
                         override fun onResponse(call: Call<String>, response: Response<String>) {
                             if (!response.isSuccessful) {
@@ -97,7 +97,7 @@ class SocketFragment : Fragment() {
 
         binding.offSocketButton.setOnClickListener {
             for (player in players) {
-                RetrofitBuilder.getApiService(player.host).socketOff().enqueue(
+                RetrofitBuilder.getApiService("http://${player.host}").socketOff().enqueue(
                     object : Callback<String> {
                         override fun onResponse(call: Call<String>, response: Response<String>) {
                             if (!response.isSuccessful) {
@@ -113,6 +113,7 @@ class SocketFragment : Fragment() {
                         override fun onFailure(call: Call<String>, t: Throwable) {
                             Toast.makeText(requireContext(), "Request Failed", Toast.LENGTH_SHORT)
                                 .show()
+                            println(t)
                         }
                     }
                 )
