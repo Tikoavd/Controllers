@@ -8,10 +8,10 @@ import retrofit2.http.POST
 
 interface ApiService {
     @FormUrlEncoded
-    @POST("/index.html")
+    @POST("index.html")
     fun socketOn(@Field("btnpwr") command: String = "on"): Call<String>
 
     @FormUrlEncoded
-    @POST("/index.html")
+    @POST("index.html")
     fun socketOff(@Field("btnpwr") command: String = "off"): Call<String>
 }

@@ -8,6 +8,23 @@
     tools:context=".Fragments.HomeFragment"
     android:background="#a6a4a4">
 
+    <ImageButton
+        android:id="@+id/homeSettingsButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.1"
+        android:layout_margin="@dimen/fat_margin"
+        android:background="@null"
+        android:scaleType="fitXY"
+        android:src="@drawable/settings_button"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintHorizontal_bias="0"/>
+
     <ImageView
         android:id="@+id/bgScheme"
         android:layout_width="0dp"

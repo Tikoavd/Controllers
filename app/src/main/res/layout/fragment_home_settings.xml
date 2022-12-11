@@ -1,9 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.HomeSettingsFragment" >
+    tools:context=".Fragments.HomeSettingsFragment"
+    android:background="#a6a4a4">
+
+    <ImageButton
+        android:id="@+id/backToHomeButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/fat_margin"
+        android:background="@null"
+        android:scaleType="fitXY"
+        android:src="@drawable/back_arrow"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintHorizontal_weight="50"
+        app:layout_constraintBottom_toTopOf="@id/settingsTopLine"
+        app:layout_constraintEnd_toStartOf="@id/settingsLogotype"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0" />
+
+    <ImageView
+        android:id="@+id/settingsLogotype"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/logo_image"
+        android:layout_marginTop="@dimen/fat_margin"
+        app:layout_constraintDimensionRatio="161:223"
+        app:layout_constraintHorizontal_weight="100"
+        app:layout_constraintBottom_toTopOf="@id/settingsTopLine"
+        app:layout_constraintEnd_toStartOf="@id/videoName"
+        app:layout_constraintStart_toEndOf="@+id/backToHomeButton"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/videoName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/maitree_light"
+        android:text="Настройки"
+        android:textColor="#F7F7F7"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="@id/settingsLogotype"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/settingsLogotype"
+        app:layout_constraintTop_toTopOf="@+id/settingsLogotype"
+        app:layout_constraintVertical_bias="0.75" />
+
+    <ImageView
+        android:id="@+id/line"
+        android:layout_width="0dp"
+        android:layout_height="4dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/line_vector"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/settingsLogotype"
+        app:layout_constraintTop_toBottomOf="@+id/videoName" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/settingsTopLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.24"/>
+
+    <TextView
+        android:id="@+id/playerText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/maitree_light"
+        android:text="BrightSign"
+        android:textColor="#F7F7F7"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/playerRecyclerView"
+        app:layout_constraintEnd_toEndOf="@id/playerRecyclerView"
+        app:layout_constraintStart_toStartOf="@id/playerRecyclerView"
+        app:layout_constraintTop_toBottomOf="@+id/settingsTopLine"
+        app:layout_constraintVertical_bias="0.75" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/playerRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/fat_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/playerText"
+        app:layout_constraintBottom_toTopOf="@id/addPlayerButton"
+        app:layout_constraintEnd_toStartOf="@id/socketRecyclerView"/>
+
+    <Button
+        android:id="@+id/addPlayerButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/fat_margin"
+        android:text="Добавить"
+        android:backgroundTint="#85fc81"
+        app:layout_constraintTop_toBottomOf="@id/playerRecyclerView"
+        app:layout_constraintStart_toStartOf="@id/playerRecyclerView"
+        app:layout_constraintEnd_toEndOf="@id/playerRecyclerView"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        android:id="@+id/socketText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/maitree_light"
+        android:text="Розетки"
+        android:textColor="#F7F7F7"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/socketRecyclerView"
+        app:layout_constraintEnd_toEndOf="@id/socketRecyclerView"
+        app:layout_constraintStart_toStartOf="@id/socketRecyclerView"
+        app:layout_constraintTop_toBottomOf="@+id/settingsTopLine"
+        app:layout_constraintVertical_bias="0.75" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/socketRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/fat_margin"
+        app:layout_constraintStart_toEndOf="@id/playerRecyclerView"
+        app:layout_constraintTop_toBottomOf="@id/socketText"
+        app:layout_constraintBottom_toTopOf="@id/addSocketButton"
+        app:layout_constraintEnd_toStartOf="@id/projectorRecyclerView"/>
+
+    <Button
+        android:id="@+id/addSocketButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/fat_margin"
+        android:text="Добавить"
+        android:backgroundTint="#85fc81"
+        app:layout_constraintTop_toBottomOf="@id/socketRecyclerView"
+        app:layout_constraintStart_toStartOf="@id/socketRecyclerView"
+        app:layout_constraintEnd_toEndOf="@id/socketRecyclerView"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        android:id="@+id/projectorText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/maitree_light"
+        android:text="Проекторы"
+        android:textColor="#F7F7F7"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/projectorRecyclerView"
+        app:layout_constraintEnd_toEndOf="@id/projectorRecyclerView"
+        app:layout_constraintStart_toStartOf="@id/projectorRecyclerView"
+        app:layout_constraintTop_toBottomOf="@+id/settingsTopLine"
+        app:layout_constraintVertical_bias="0.75" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/projectorRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/fat_margin"
+        app:layout_constraintStart_toEndOf="@id/socketRecyclerView"
+        app:layout_constraintTop_toBottomOf="@id/projectorText"
+        app:layout_constraintBottom_toTopOf="@id/addProjectorButton"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <Button
+        android:id="@+id/addProjectorButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/fat_margin"
+        android:text="Добавить"
+        android:backgroundTint="#85fc81"
+        app:layout_constraintTop_toBottomOf="@id/projectorRecyclerView"
+        app:layout_constraintStart_toStartOf="@id/projectorRecyclerView"
+        app:layout_constraintEnd_toEndOf="@id/projectorRecyclerView"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

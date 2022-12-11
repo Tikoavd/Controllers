@@ -72,7 +72,7 @@ class SocketFragment : Fragment() {
 
         binding.onSocketButton.setOnClickListener {
             for (player in players) {
-                RetrofitBuilder.getApiService("http://${player.host}").socketOn().enqueue(
+                RetrofitBuilder.getApiService("http://${player.host}/").socketOn().enqueue(
                     object : Callback<String> {
                         override fun onResponse(call: Call<String>, response: Response<String>) {
                             if (!response.isSuccessful) {
@@ -96,7 +96,7 @@ class SocketFragment : Fragment() {
 
         binding.offSocketButton.setOnClickListener {
             for (player in players) {
-                RetrofitBuilder.getApiService("http://${player.host}").socketOff().enqueue(
+                RetrofitBuilder.getApiService("http://${player.host}/").socketOff().enqueue(
                     object : Callback<String> {
                         override fun onResponse(call: Call<String>, response: Response<String>) {
                             if (!response.isSuccessful) {
