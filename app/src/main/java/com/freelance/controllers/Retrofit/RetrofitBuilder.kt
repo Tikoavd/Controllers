@@ -24,22 +24,5 @@ object RetrofitBuilder {
             .build()
     }
 
-    private fun getProjectorRetrofit(url: String) : Retrofit {
-        val interceptor = HttpLoggingInterceptor()
-        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
-        val client = OkHttpClient.Builder()
-            .addInterceptor(BasicAuth("admin", "Password0"))
-            .readTimeout(60, TimeUnit.SECONDS)
-            .connectTimeout(60, TimeUnit.SECONDS)
-            .addInterceptor(interceptor).build()
-
-        return Retrofit.Builder()
-            .client(client)
-            .baseUrl(url)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-    }
-
     fun getApiService(url: String): ApiService = getRetrofit(url).create(ApiService::class.java)
-    fun getProjectorApiService(url: String) : ProjectorApiService = getProjectorRetrofit(url).create(ProjectorApiService::class.java)
 }
