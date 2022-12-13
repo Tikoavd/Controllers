@@ -12,15 +12,24 @@ import com.freelance.controllers.Fragments.Interfaces.AdminMode
 import com.freelance.controllers.Fragments.Interfaces.OpenPasswordDialog
 import com.freelance.controllers.R
 import com.freelance.controllers.Request.UDPSender
+import com.freelance.controllers.Request.hexToBytes
 import com.freelance.controllers.Retrofit.RetrofitBuilder
 import com.freelance.controllers.Room.AppDatabase
 import com.freelance.controllers.Room.InstalType
 import com.freelance.controllers.databinding.FragmentHomeBinding
+import kotlinx.coroutines.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.DataOutputStream
+import java.net.InetAddress
+import java.net.Socket
 
 class HomeFragment : Fragment() {
+    val coroutineScope = CoroutineScope(Dispatchers.IO + CoroutineExceptionHandler { _, throwable ->
+        println(throwable.message)
+    })
+
     var inAdminMode = false
     var adminMode: AdminMode? = null
 
@@ -92,8 +101,17 @@ class HomeFragment : Fragment() {
                     }
 
                     for (projector in projectors) {
-                        val uri = Uri.parse("udp://${projector.host}:${projector.port}/${Uri.encode("0x7E3030303020310D")}")
-                        UDPSender().SendTo(requireContext(), uri)
+                        coroutineScope.launch {
+                            val socket = coroutineScope.async {
+                                val inetAddress = InetAddress.getByName(projector.host)
+                                Socket(inetAddress, projector.port.toInt())
+                            }
+
+                            val writer = DataOutputStream(socket.await().getOutputStream())
+                            writer.write("2531504f575220310d".hexToBytes())
+                            writer.flush()
+                            socket.await().close()
+                        }
                     }
 
                     dialog.cancel()
@@ -138,8 +156,17 @@ class HomeFragment : Fragment() {
                     }
 
                     for (projector in projectors) {
-                        val uri = Uri.parse("udp://${projector.host}:${projector.port}/${Uri.encode("0x7E3030303020300D")}")
-                        UDPSender().SendTo(requireContext(), uri)
+                        coroutineScope.launch {
+                            val socket = coroutineScope.async {
+                                val inetAddress = InetAddress.getByName(projector.host)
+                                Socket(inetAddress, projector.port.toInt())
+                            }
+
+                            val writer = DataOutputStream(socket.await().getOutputStream())
+                            writer.write("2531504f575220300d".hexToBytes())
+                            writer.flush()
+                            socket.await().close()
+                        }
                     }
 
                     dialog.cancel()

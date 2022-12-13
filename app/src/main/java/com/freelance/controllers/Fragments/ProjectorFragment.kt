@@ -2,19 +2,31 @@ package com.freelance.controllers.Fragments
 
 import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.freelance.controllers.R
 import com.freelance.controllers.Request.UDPSender
+import com.freelance.controllers.Request.bytesToHex
+import com.freelance.controllers.Request.hexToBytes
 import com.freelance.controllers.Room.AppDatabase
 import com.freelance.controllers.Room.InstalEntity
 import com.freelance.controllers.Room.PlayerEntity
 import com.freelance.controllers.databinding.FragmentProjectorBinding
-import com.freelance.controllers.databinding.FragmentSocketBinding
+import kotlinx.coroutines.*
+import java.io.BufferedOutputStream
+import java.io.DataInputStream
+import java.io.DataOutputStream
+import java.io.OutputStreamWriter
+import java.net.InetAddress
+import java.net.Socket
 
 class ProjectorFragment : Fragment() {
+    val coroutineScope = CoroutineScope(Dispatchers.IO + CoroutineExceptionHandler { _, throwable ->
+        println(throwable.message)
+    })
+
     var menuFragment: MenuFragment? = null
 
     var _instalEntity: InstalEntity? = null
@@ -65,15 +77,33 @@ class ProjectorFragment : Fragment() {
 
         binding.onProjectorButton.setOnClickListener {
             for (player in players) {
-                val uri = Uri.parse("udp://${player.host}:${player.port}/${Uri.encode("0x7E3030303020310D")}")
-                UDPSender().SendTo(requireContext(), uri)
+                coroutineScope.launch {
+                    val socket = coroutineScope.async {
+                        val inetAddress = InetAddress.getByName(player.host)
+                        Socket(inetAddress, player.port.toInt())
+                    }
+
+                    val writer = DataOutputStream(socket.await().getOutputStream())
+                    writer.write("2531504f575220310d".hexToBytes())
+                    writer.flush()
+                    socket.await().close()
+                }
             }
         }
 
         binding.offProjectorButton.setOnClickListener {
             for (player in players) {
-                val uri = Uri.parse("udp://${player.host}:${player.port}/${Uri.encode("0x7E3030303020300D")}")
-                UDPSender().SendTo(requireContext(), uri)
+                coroutineScope.launch {
+                    val socket = coroutineScope.async {
+                        val inetAddress = InetAddress.getByName(player.host)
+                        Socket(inetAddress, player.port.toInt())
+                    }
+
+                    val writer = DataOutputStream(socket.await().getOutputStream())
+                    writer.write("2531504f575220300d".hexToBytes())
+                    writer.flush()
+                    socket.await().close()
+                }
             }
         }
     }

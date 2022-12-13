@@ -30,7 +30,7 @@ class UDPSender {
         val buf = msgBytes
         val appName = context.getString(R.string.app_name)
         Log.d(appName, String(msgBytes))
-        Log.d(appName, "0x" + msgBytes.bytesToHex())
+        //Log.d(appName, "0x" + msgBytes.bytesToHex())
 
         Thread {
             try {
